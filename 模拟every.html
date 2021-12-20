@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模拟every</title>
+</head>
+<body>
+  <script>
+    let arr=[1,1,2,5,5,1,5,1];
+    Array.prototype.newEvery=function(fn){
+      if(Object.prototype.toString.call(fn)!=='[object Function]'){
+        throw Error('the argument must be a function')
+      }
+      for(let i=0;i<this.length;i++){
+        if(!fn(this[i],i,this)){
+          return false
+        }
+      }
+      return true
+    }
+    let res=arr.newEvery((item,index,arr)=>{
+      return item>0
+    })
+    console.log(res);
+  </script>
+</body>
+</html>

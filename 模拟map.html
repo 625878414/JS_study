@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模拟map</title>
+</head>
+<body>
+  <script>
+    let arr=[1,8,51,1,6,9];
+    Array.prototype.newMap=function(fn,thisArg){
+      if(Object.prototype.toString.call(fn)!=='[object Function]'){
+        throw Error('the argument must be a function')
+      }
+      let arr=[];
+      for(let i=0;i<this.length;i++){
+        arr[i]=fn.call(thisArg,this[i],i,this)
+      }
+      return arr
+    }
+    let res=arr.newMap((item,index,arr)=>{
+      return item+1
+    })
+    console.log(res);
+    let res1=arr.map((item,index,arr)=>{
+      return item+1
+    })
+    console.log(res1);
+  </script>
+</body>
+</html>

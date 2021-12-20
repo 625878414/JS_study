@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var treeData = [
+        {
+          id: 1,
+          label: "一级 1",
+          children: [
+            {
+              id: 4,
+              label: "二级 1-1",
+              children: [
+                {
+                  id: 9,
+                  label: "三级 1-1-1",
+                  children: [],
+                },
+                {
+                  id: 10,
+                  label: "三级 1-1-2",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 2,
+          label: "一级 2",
+          children: [
+            {
+              id: 5,
+              label: "二级 2-1",
+              children: [],
+            },
+            {
+              id: 6,
+              label: "二级 2-2",
+              children: [],
+            },
+          ],
+        },
+        {
+          id: 3,
+          label: "一级 3",
+          children: [
+            {
+              id: 7,
+              label: "二级 3-1",
+              children: [],
+            },
+            {
+              id: 8,
+              label: "二级 3-2",
+              children: [],
+            },
+          ],
+        },
+      ];
+      function getTreeData(data) {
+      if (data.length > 0) {
+        for (var i = 0; i < data.length; i++) {
+          if (!data[i].children || data[i].children.length < 1) {
+            delete data[i].children
+          } else {
+            // children若不为空，则继续递归调用本方法
+            this.getTreeData(data[i].children);
+          }
+        }
+      }
+ 
+      return data;
+    }
+    treeData=getTreeData(treeData);
+    console.log(treeData);
+  </script>
+</body>
+</html>

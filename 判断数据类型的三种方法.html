@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>判断数据类型的三种方法</title>
+</head>
+<body>
+  <script>
+    let str="耗子";
+    let arr=[1,2,3,4];
+    let obj={name:"haozi"};
+    let fn=function(){
+      console.log(132);
+    };
+    let Reg=/a-z/;
+    let boolean=false;
+    let number=1;
+
+    console.log(typeof str);
+    console.log(typeof number);
+    console.log(typeof boolean);
+    console.log(typeof undefined);
+    console.log(typeof fn);
+    console.log(typeof obj);
+    console.log(typeof arr);
+    console.log(typeof Reg);
+
+    //typeof 只能判断function string number boolean undefined
+
+
+    console.log(arr instanceof Array );  //true
+    console.log(arr instanceof Object );  //true
+    console.log(fn instanceof Object );   //true
+    //instanceof 检测一个数据是否为某某的实列化对象 只能用于检测引用数据类型
+
+    console.log(Object.prototype.toString.call(str));   //[object String]
+    console.log(Object.prototype.toString.call(null));   //[object Null]
+    console.log(Object.prototype.toString.call(undefined));   //[object Undefined]
+    console.log(Object.prototype.toString.call(Reg));   //[object RegExp]
+    console.log(Object.prototype.toString.call(fn));   //[object Function]
+    console.log(Object.prototype.toString.call(number));   //[object number]
+    console.log(Object.prototype.toString.call(boolean));   //[object Boolean]
+    console.log(Object.prototype.toString.call(arr));   //[object Array]
+
+    //Object.prototype.toString  比较全面  但是类型如果不是对象类型 需要call
+    console.log(Object.prototype.toString(fn));
+  </script>
+</body>
+</html>

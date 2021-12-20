@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>多维数组转为树形展示</title>
+  </head>
+  <body>
+    <div class="tree"></div>
+    <script>
+      var data = [
+        {
+          name: "IT互联网",
+          child: [
+            {
+              name: "编程语言",
+              child: [
+                {
+                  name: "java",
+                },
+                {
+                  name: ".net/c#",
+                },
+                {
+                  name: "python",
+                },
+                {
+                  name: "javascript",
+                },
+              ],
+            },
+            {
+              name: "前端开发",
+              child: [
+                {
+                  name: "vue",
+                },
+                {
+                  name: "react",
+                },
+                {
+                  name: "angular",
+                },
+              ],
+            },
+            {
+              name: "移动开发",
+              child: [
+                {
+                  name: "IOS开发",
+                },
+                {
+                  name: "安卓开发",
+                },
+                {
+                  name: "react native混合开发",
+                },
+              ],
+            },
+            {
+              name: "游戏开发",
+              child: [
+                {
+                  name: "webGL开发",
+                },
+                {
+                  name: "3D游戏",
+                },
+                {
+                  name: "2D游戏",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "设计创作",
+          child: [
+            {
+              name: "平面设计",
+              child: [
+                {
+                  name: "综合平面设计",
+                },
+                {
+                  name: "摄影后期",
+                },
+                {
+                  name: "电商美工",
+                },
+              ],
+            },
+            {
+              name: "UI设计",
+              child: [
+                {
+                  name: "交互设计",
+                },
+                {
+                  name: "webUI设计",
+                },
+                {
+                  name: "游戏UI设计",
+                },
+              ],
+            },
+            {
+              name: "软件设计",
+            },
+          ],
+        },
+        {
+          name: "升学考研",
+          child: [
+            {
+              name: "考研",
+            },
+            {
+              name: "大学",
+            },
+            {
+              name: "高中",
+            },
+            {
+              name: "初中",
+            },
+          ],
+        },
+        {
+          name: "职企考证",
+          child: [
+            {
+              name: "公务员",
+            },
+            {
+              name: "教师资格",
+            },
+            {
+              name: "建筑工程",
+            },
+          ],
+        },
+      ];
+      window.onload = () => {
+        // let str = "<ul>";
+        // for (let i = 0; i < data.length; i++) {
+        //   str += `<li>${data[i].name}</li>`;
+        //   if (data[i].child) {
+        //     str += "<ul>";
+        //     for (let j = 0; j < data[i].child.length; j++) {
+        //       str += `<li>${data[i].child[j].name}</li>`;
+        //       if (data[i].child[j].child) {
+        //         str += "<ul>";
+        //         for (let k = 0; k < data[i].child[j].child.length; k++) {
+        //           str += `<li>${data[i].child[j].child[k].name}</li>`;
+        //         }
+        //         str+="</ul>"
+        //       }
+        //     }
+        //     str += "</ul>";
+        //   }
+        // }
+        // str += "</ul>";
+        // let node = document.querySelector(".tree");
+        // node.innerHTML = str;
+        // console.log(node);
+        function xxx(data){
+          let str="<ul>";
+            for(let i=0;i<data.length;i++){
+              str+=`<li>${data[i].name}</li>`
+              if(data[i].child){
+                str+=xxx(data[i].child)
+              }
+            }
+          str+="</ul>"
+          return str
+        }
+        console.log(xxx(data));
+        let node = document.querySelector(".tree");
+        node.innerHTML = xxx(data);
+
+
+        // function f(a){
+        //   if(a<5){
+        //     console.log(a);
+        //     a++
+        //     f(a)
+        //   }
+        // }
+        // f(1)
+      };
+    </script>
+  </body>
+</html>

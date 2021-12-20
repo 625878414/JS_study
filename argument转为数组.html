@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>argument转为数组</title>
+</head>
+<body>
+  <script>
+    // function xx(a){
+    //   console.log(arguments);
+    //   let arr=Array.prototype.slice.call(arguments);
+    //   console.log(arr);
+    // }
+    // xx(123)
+    function xx(...params){
+      console.log(params);
+    }
+    xx(1,2,3,4,5)
+  </script>
+</body>
+</html>

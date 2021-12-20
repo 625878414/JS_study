@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //url是由 协议,域名,路径构成 如 http:// + baidu.com + /login
+      function url(a, b, c) {
+        return a + b + c;
+      }
+      let res = url("http://", "baidu.com", "/login");
+      console.log(res); //结果为    http://baidu.com/login
+
+      //但是大多数url前面都是http开头 所以传参是可以不用省略第一个,这时我们可以使用柯里化函数
+
+      //柯里化函数好处是可以将比较固定的参数先传入,然后得到一个具有部分参数的偏函数,每次调用偏函数,在偏函数中传入不固定的参数,完成调用
+      //这样可以节约代码量,不必每次都传入固定的参数
+      //如以下代码所示,url的http:// 是比较固定的一个参数,所以先传入这个参数 得到一个偏函数,然后调用这个偏函数,给偏函数传入剩余不是
+      //特别固定的参数
+      
+      function curriedUrl(a) {
+        return (b) => {
+          return (c) => {
+            return a + b + c;
+          };
+        };
+      }
+      let xx = curriedUrl("http://");
+      let res1 = xx("163.com")("/index");
+      let res2 = xx("qq.com")("/search");
+      let res3 = xx("4399.com")("/error");
+      console.log(res1);
+      console.log(res2);
+      console.log(res3);
+    </script>
+  </body>
+</html>

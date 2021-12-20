@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>删除所有元素中指定的class</title>
+</head>
+<body>
+  <div>
+    <ul>
+      <li></li>
+      <li class="container"></li>
+      <li class="container"></li>
+      <li class="container"></li>
+      <li class="container"></li>
+      <li class="container"></li>
+    </ul>
+  </div>
+  <script>
+    let removeClass=(className)=>{
+      let arr=document.querySelectorAll(`.${className}`);
+      Array.prototype.forEach.call(arr,(el)=>{
+        el.classList.remove(className)
+      })
+    }
+    
+  </script>
+</body>
+</html>
